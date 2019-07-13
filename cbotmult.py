@@ -19,7 +19,12 @@ def chat():
             sys.exit()
         userInput = input()
         cb.send_input(userInput)
-        bot = cb.get_response()
+        try:
+            bot = cb.get_response()
+        except:
+            cb.browser.get(cb.url)
+            print("I don't know how to respond...")
+            continue
         print(bot)
     cb.browser.close()
 
